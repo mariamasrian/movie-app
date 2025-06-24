@@ -1,0 +1,29 @@
+.detailDescription {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.5;
+  max-height: 4.5em;
+  overflow: hidden;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  cursor: pointer;
+  position: relative;
+  transition: max-height 0.3s ease;
+}
+
+.expanded {
+  max-height: none;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+}
+
+.readMore {
+  color: #2563eb;
+  font-weight: 500;
+  margin-left: 4px;
+}
