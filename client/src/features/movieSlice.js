@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchMovies, searchMovies } from "./actions";
+import { reducers, extraReducers } from "./reducers";
 
 const initialState = {
   state: [],
@@ -8,39 +8,11 @@ const initialState = {
   selectedMovie: null,
 };
 
-export const movieSlice = createSlice({
+const movieSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {
-    setSelectedMovie: (state, action) => {
-      state.selectedMovie = action.payload;
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchMovies.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchMovies.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.state = action.payload;
-      })
-      .addCase(fetchMovies.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      })
-      .addCase(searchMovies.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(searchMovies.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.state = action.payload;
-      })
-      .addCase(searchMovies.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      });
-  },
+  reducers,
+  extraReducers,
 });
 
 export const { setSelectedMovie } = movieSlice.actions;
